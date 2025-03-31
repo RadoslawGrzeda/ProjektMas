@@ -1,59 +1,102 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
 public class Samochod {
-    private String marka;
-    private String model;
-    private int idSamochodu;
-    private String dataProdukcji;
-    private int liczbaMiejsc;
-    private double aktualnyPrzebieg;
-    private Silnik silnik;
-    private boolean isofix;
-
+//    private String model;
+//    private int idSamochodu;
+//    private String dataProdukcji;
+//    private int liczbaMiejsc;
+//    private double aktualnyPrzebieg;
     //stan
-    private double kwotaWypozyczeniaZaDzien;
-    private double kwotaWypozyczeniaZaMiesiac;
-    private double kwotaWypozyczeniaZatydzien;
-    private static ArrayList<Samochod>ektensjaSamochod=new ArrayList<>();
+//    private double kwotaWypozyczeniaZaDzien;
+//    private double kwotaWypozyczeniaZaMiesiac;
+//    private double kwotaWypozyczeniaZatydzien;
+
+    private static ArrayList<Samochod> ektensjaSamochod = new ArrayList<>();
+    private Silnik silnik;
+    private String opis; //opcjonalny
+    private String marka;
+private List<String> elementWyposazenia;
+    
     //Konstruktor
-    public Samochod
-         (Silnik silnik,
-          String marka,String model,int idSamochodu, String dataProdukcji,
-          int liczbaMiejsc,double aktualnyPrzebieg,double kwotaWypozyczeniaZaDzien,
-          double kwotaWypozyczeniaZatydzien,double kwotaWypozyczeniaZaMiesiac,Boolean isofix
-         )
-    {
-        this.isofix=(isofix==null) ? false : isofix;
-        this.marka=marka;
-        this.model=model;
-        this.idSamochodu = idSamochodu;
-        this.dataProdukcji = dataProdukcji;
-        this.liczbaMiejsc = liczbaMiejsc;
-        this.aktualnyPrzebieg = aktualnyPrzebieg;
-        this.kwotaWypozyczeniaZaDzien = kwotaWypozyczeniaZaDzien;
-        this.kwotaWypozyczeniaZatydzien=kwotaWypozyczeniaZatydzien;
-        this.kwotaWypozyczeniaZaMiesiac = kwotaWypozyczeniaZaMiesiac;
-        ektensjaSamochod.add(this);
-
+    public Samochod(String marka,Silnik silnik) {
+        if(marka.isBlank() || marka==null){
+            throw new IllegalArgumentException("Marka nie moze byc pusta");
         }
-/
+        this.marka=marka;
+        this.silnik = silnik;
+        ektensjaSamochod.add(this);
+        this.opis = null;
+    }
 
-    public static void show(){
-        for(Samochod samochod : ektensjaSamochod){
+    public Samochod(String marka,Silnik silnik, String opis) {
+        if(marka.isBlank() || marka==null){
+            throw new IllegalArgumentException("Marka nie moze byc pusta");
+        }
+        this.silnik = silnik;
+        this.marka=marka;
+        ektensjaSamochod.add(this);
+        this.opis = opis;
+    }
+
+    public void setOpis(String opis) {
+        if(opis==null) {
+            this.opis = null;
+            return;
+        }
+//        if (opis.isBlank())
+//            throw new IllegalArgumentException();
+        if (opis.length() < 30)
+            throw new IllegalArgumentException();
+        this.opis = opis;
+        }
+
+     public String getOpis(){
+         return opis;
+    }
+    public void setMarka(String marka) {
+        if(marka==null || marka.isBlank()){
+            throw new IllegalArgumentException("Marka nie moze byc pusta");
+        }
+        this.marka = marka;
+
+    }
+//         (Silnik silnik,
+//          String marka,String model,int idSamochodu, String dataProdukcji,
+//          int liczbaMiejsc,double aktualnyPrzebieg,double kwotaWypozyczeniaZaDzien,
+//          double kwotaWypozyczeniaZatydzien,double kwotaWypozyczeniaZaMiesiac,Boolean isofi)
+//    {
+//        this.marka=marka;
+//        this.model=model;
+//        this.idSamochodu = idSamochodu;
+//        this.dataProdukcji = dataProdukcji;
+//        this.liczbaMiejsc = liczbaMiejsc;
+//        this.aktualnyPrzebieg = aktualnyPrzebieg;
+//        this.kwotaWypozyczeniaZaDzien = kwotaWypozyczeniaZaDzien;
+//        this.kwotaWypozyczeniaZatydzien=kwotaWypozyczeniaZatydzien;
+//        this.kwotaWypozyczeniaZaMiesiac = kwotaWypozyczeniaZaMiesiac;
+//        ektensjaSamochod.add(this);
+//        }
+
+
+    public static void show() {
+        for (Samochod samochod : ektensjaSamochod) {
             System.out.print(samochod);
         }
     }
-    public static ArrayList<Samochod> getSamochod(){
+
+    public static ArrayList<Samochod> getSamochod() {
         return new ArrayList<>(ektensjaSamochod);
     }
-
-    public String toString() {
-        return marka+' ' +model+' '+idSamochodu+' ' +dataProdukcji;
-        }
-
-        public boolean isofix() {
-return isofix;
-        }
 }
+
+//    public String toString() {
+//        return marka+' ' +model+' '+idSamochodu+' ' +dataProdukcji;
+//        }
+//
+//        public boolean isofix() {
+//return isofix;
+//        }
+//}
