@@ -18,28 +18,50 @@ public class Samochod {
     private Silnik silnik;
     private String opis; //opcjonalny
     private String marka;
-private List<String> elementWyposazenia;
+    private List<String> elementyWyposazenia=new ArrayList<>();
     
     //Konstruktor
-    public Samochod(String marka,Silnik silnik) {
+    public Samochod(String marka,Silnik silnik,String elementWyposazenia) {
         if(marka.isBlank() || marka==null){
             throw new IllegalArgumentException("Marka nie moze byc pusta");
         }
+        add(elementWyposazenia);
         this.marka=marka;
         this.silnik = silnik;
         ektensjaSamochod.add(this);
         this.opis = null;
     }
 
-    public Samochod(String marka,Silnik silnik, String opis) {
+    public Samochod(String marka,Silnik silnik, String opis,String elementWyposazenia) {
         if(marka.isBlank() || marka==null){
             throw new IllegalArgumentException("Marka nie moze byc pusta");
         }
+        add(elementWyposazenia);
         this.silnik = silnik;
         this.marka=marka;
         ektensjaSamochod.add(this);
         this.opis = opis;
     }
+
+    public  void add(String elementWyposazenia){
+        if(elementWyposazenia.isBlank())
+            throw new IllegalArgumentException("ElementWyposazenia nie moze byc pusty");
+        if(elementWyposazenia==null)
+            throw new IllegalArgumentException("Element musi posiadac jakas wartosc");
+            
+        this.elementyWyposazenia.add(elementWyposazenia);
+    }
+
+    public  void remove(String elementWyposazenia){
+        if (!this.elementyWyposazenia.contains(elementWyposazenia)) {
+            throw new IllegalArgumentException("Samochod nie posiada takiego wyposażenia")
+        }if(elementWyposazenia.length()==1) {
+                throw new IllegalArgumentException("Nie mozna usunac osattniego elementu wyposazenia")
+            }
+                this.elementyWyposazenia.remove(elementWyposazenia);
+            }
+
+
 
     public void setOpis(String opis) {
         if(opis==null) {
