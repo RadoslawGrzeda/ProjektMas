@@ -9,13 +9,18 @@ public class Main {
       Samochod sa=new Samochod("opel",silnik,"Radio");
       Samochod sa2=new Samochod("Ford",new Silnik(3.2,215,"dise"),"testttt");
 
-      sa
+        System.out.println(sa.getElementWyposazenia());
+        sa.add("klimatyzacja");
+//    sa.remove("skóra");
+        System.out.println(sa.getElementWyposazenia());
 
 
       sa.setOpis(null);
-      //      sa.setOpis("");
-System.out.println(sa.getOpis());
+        System.out.println(Samochod.getSamochod());
+      //      sa.etOpis("");
+//System.out.println(sa.getOpis());
 
+        Samochod.pokazSamochody();
 
 //    Samochod.show();
 //        System.out.println(sam.isofix());

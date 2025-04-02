@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 public class Samochod {
@@ -18,7 +17,8 @@ public class Samochod {
     private Silnik silnik;
     private String opis; //opcjonalny
     private String marka;
-    private List<String> elementyWyposazenia=new ArrayList<>();
+    private List<String> elementyWyposazenia=new ArrayList<>(); //powtarzalny
+    private static double kaucja=5000;
     
     //Konstruktor
     public Samochod(String marka,Silnik silnik,String elementWyposazenia) {
@@ -54,12 +54,13 @@ public class Samochod {
 
     public  void remove(String elementWyposazenia){
         if (!this.elementyWyposazenia.contains(elementWyposazenia)) {
-            throw new IllegalArgumentException("Samochod nie posiada takiego wyposażenia")
-        }if(elementWyposazenia.length()==1) {
-                throw new IllegalArgumentException("Nie mozna usunac osattniego elementu wyposazenia")
+            throw new IllegalArgumentException("Samochod nie posiada takiego wyposażenia");
+        }if(elementyWyposazenia.size()==1) {
+                throw new IllegalArgumentException("Nie mozna usunac osattniego elementu wyposazenia");
             }
                 this.elementyWyposazenia.remove(elementWyposazenia);
             }
+
 
 
 
@@ -85,6 +86,17 @@ public class Samochod {
         this.marka = marka;
 
     }
+
+public static double getKaucja(){
+        return kaucja;
+}
+    public static void setKaucja(double nowaKaucja){
+        if (nowaKaucja<2000){
+            throw new IllegalArgumentException("Za niska cena kaucji");
+        }
+        kaucja = nowaKaucja;
+    }
+
 //         (Silnik silnik,
 //          String marka,String model,int idSamochodu, String dataProdukcji,
 //          int liczbaMiejsc,double aktualnyPrzebieg,double kwotaWypozyczeniaZaDzien,
@@ -108,9 +120,16 @@ public class Samochod {
             System.out.print(samochod);
         }
     }
+    public ArrayList<String> getElementWyposazenia() {return new ArrayList<>(elementyWyposazenia);}
 
     public static ArrayList<Samochod> getSamochod() {
         return new ArrayList<>(ektensjaSamochod);
+    }
+
+    public static void pokazSamochody(){
+        for (Samochod samochod : ektensjaSamochod) {
+            System.out.println(samochod);
+        }
     }
 }
 
