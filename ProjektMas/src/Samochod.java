@@ -21,7 +21,8 @@ public class Samochod {
     private static double kaucja=5000;
     private int rokProdukcji;
     private String model;
-    //Konstruktor
+
+
     public Samochod(String marka,String model,int rokProdukcji,Silnik silnik,String elementWyposazenia) {
         if(marka.isBlank() || marka==null){
             throw new IllegalArgumentException("Marka nie moze byc pusta");
@@ -53,12 +54,22 @@ public class Samochod {
         return new ArrayList<>(ekstensjaSamochod);
     }
 
+
     //2
 
     //3 klasa Silnik
 
-    //4
 
+    //4
+    public void setOpis(String opis) {
+        if(opis==null) {
+            this.opis = null;
+            return;
+        }
+        if (opis.length() < 30)
+            throw new IllegalArgumentException();
+        this.opis = opis;
+    }
 
 
     public  void add(String elementWyposazenia){
@@ -66,7 +77,7 @@ public class Samochod {
             throw new IllegalArgumentException("ElementWyposazenia nie moze byc pusty");
         if(elementWyposazenia==null)
             throw new IllegalArgumentException("Element musi posiadac jakas wartosc");
-            
+
         this.elementyWyposazenia.add(elementWyposazenia);
     }
 
@@ -78,9 +89,9 @@ public class Samochod {
             }
                 this.elementyWyposazenia.remove(elementWyposazenia);
             }
-
 //            public int getRokProdukcji(){
 //        return rokProdukcji;
+
 //            }
 
     public int getWiekSamochodu(){
@@ -88,18 +99,6 @@ public class Samochod {
         return aktualnyRok-rokProdukcji;
     }
 
-
-    public void setOpis(String opis) {
-        if(opis==null) {
-            this.opis = null;
-            return;
-        }
-//        if (opis.isBlank())
-//            throw new IllegalArgumentException();
-        if (opis.length() < 30)
-            throw new IllegalArgumentException();
-        this.opis = opis;
-        }
 
      public String getOpis(){
          return opis;

@@ -8,6 +8,15 @@ public class Silnik {
         if(rodzajPaliwa.isBlank() || rodzajPaliwa==null){
             throw new IllegalArgumentException("Silnik musi cos spalac");
         }
+        boolean znajde=false;
+        for (int i=0;i<arr.length;i++){
+            if(arr[i].equals(rodzajPaliwa.toLowerCase())){
+                znajde=true;
+            }
+        }
+        if(znajde==false){
+            throw new IllegalArgumentException("Nie ma takiego rodzaju paliwa");
+        }
         this.pojemnosc = pojemnosc;
         this.iloscKoniMechaniczynch=iloscKoniMechaniczynch;
         this.rodzajPaliwa=rodzajPaliwa;
