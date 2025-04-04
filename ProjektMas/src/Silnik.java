@@ -1,12 +1,16 @@
 public class Silnik {
     private double pojemnosc;
     private int iloscKoniMechaniczynch;
-    private String coSpala;
+    private String rodzajPaliwa;
+    String arr[]={"benzyna","diesel","hybrydowy","elektryczny"};
 
-    public Silnik(double pojemnosc, int iloscKoniMechaniczynch, String coSpala) {
+    public Silnik(double pojemnosc, int iloscKoniMechaniczynch, String rodzajPaliwa) {
+        if(rodzajPaliwa.isBlank() || rodzajPaliwa==null){
+            throw new IllegalArgumentException("Silnik musi cos spalac");
+        }
         this.pojemnosc = pojemnosc;
         this.iloscKoniMechaniczynch=iloscKoniMechaniczynch;
-        this.coSpala=coSpala;
+        this.rodzajPaliwa=rodzajPaliwa;
 
     }
     //dodaca punkt 2 serializacje
@@ -15,10 +19,12 @@ public class Silnik {
     }
     public int getIloscKoniMechaniczynch() {
         return iloscKoniMechaniczynch;
-
     }
-    public String coSpala() {
-        return coSpala;
+    public String rodzajPaliwa() {
+        return rodzajPaliwa;
+    }
+    public void setIloscKoniMechaniczynch(int iloscKoniMechaniczynch) {
+        this.iloscKoniMechaniczynch=iloscKoniMechaniczynch;
     }
 
 

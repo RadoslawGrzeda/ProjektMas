@@ -13,35 +13,53 @@ public class Samochod {
 //    private double kwotaWypozyczeniaZaMiesiac;
 //    private double kwotaWypozyczeniaZatydzien;
 
-    private static ArrayList<Samochod> ektensjaSamochod = new ArrayList<>();
+    private static ArrayList<Samochod> ekstensjaSamochod = new ArrayList<>(); //ekstensja
     private Silnik silnik;
     private String opis; //opcjonalny
     private String marka;
     private List<String> elementyWyposazenia=new ArrayList<>(); //powtarzalny
     private static double kaucja=5000;
-    
+    private int rokProdukcji;
+    private String model;
     //Konstruktor
-    public Samochod(String marka,Silnik silnik,String elementWyposazenia) {
+    public Samochod(String marka,String model,int rokProdukcji,Silnik silnik,String elementWyposazenia) {
         if(marka.isBlank() || marka==null){
             throw new IllegalArgumentException("Marka nie moze byc pusta");
         }
+        this.rokProdukcji=rokProdukcji;
+        this.model=model;
         add(elementWyposazenia);
         this.marka=marka;
         this.silnik = silnik;
-        ektensjaSamochod.add(this);
         this.opis = null;
+        ekstensjaSamochod.add(this);
     }
 
-    public Samochod(String marka,Silnik silnik, String opis,String elementWyposazenia) {
+    public Samochod(String marka,String model,Silnik silnik,int rokProdukcji, String opis,String elementWyposazenia) {
         if(marka.isBlank() || marka==null){
             throw new IllegalArgumentException("Marka nie moze byc pusta");
         }
+        this.rokProdukcji=rokProdukcji;
+        this.model=model;
         add(elementWyposazenia);
         this.silnik = silnik;
         this.marka=marka;
-        ektensjaSamochod.add(this);
         this.opis = opis;
+        ekstensjaSamochod.add(this);
     }
+
+    //1 Ekstensja
+    public static ArrayList<Samochod> getEkstensjaSamochod() {
+        return new ArrayList<>(ekstensjaSamochod);
+    }
+
+    //2
+
+    //3 klasa Silnik
+
+    //4
+
+
 
     public  void add(String elementWyposazenia){
         if(elementWyposazenia.isBlank())
@@ -61,7 +79,14 @@ public class Samochod {
                 this.elementyWyposazenia.remove(elementWyposazenia);
             }
 
+//            public int getRokProdukcji(){
+//        return rokProdukcji;
+//            }
 
+    public int getWiekSamochodu(){
+        int aktualnyRok=java.time.Year.now().getValue();
+        return aktualnyRok-rokProdukcji;
+    }
 
 
     public void setOpis(String opis) {
@@ -116,22 +141,26 @@ public static double getKaucja(){
 
 
     public static void show() {
-        for (Samochod samochod : ektensjaSamochod) {
+        for (Samochod samochod : ekstensjaSamochod) {
             System.out.print(samochod);
         }
     }
     public ArrayList<String> getElementWyposazenia() {return new ArrayList<>(elementyWyposazenia);}
 
-    public static ArrayList<Samochod> getSamochod() {
-        return new ArrayList<>(ektensjaSamochod);
-    }
 
     public static void pokazSamochody(){
-        for (Samochod samochod : ektensjaSamochod) {
+        for (Samochod samochod : ekstensjaSamochod) {
             System.out.println(samochod);
         }
     }
-}
+
+@Override
+public String toString() {
+    return "Samochód: " + marka + " " + model + ", Rok: " + rokProdukcji +
+            ", Wiek: " + getWiekSamochodu() + " lat" +
+            (opis != null ? ", Opis: " + opis : "") +
+            ", Wyposażenie: " + elementyWyposazenia;
+}}
 
 //    public String toString() {
 //        return marka+' ' +model+' '+idSamochodu+' ' +dataProdukcji;

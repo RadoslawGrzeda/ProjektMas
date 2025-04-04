@@ -6,21 +6,23 @@ public class Main {
 //    Samochod sam=new Samochod(silnik,"Toyota","verso",1,"2022",5,192.31,100,600,2300,null);
 //    Samochod sam2=new Samochod(silnik,"Toyota","verso",1,"2022",5,192.31,100,600,2300,true);
 
-      Samochod sa=new Samochod("opel",silnik,"Radio");
-      Samochod sa2=new Samochod("Ford",new Silnik(3.2,215,"dise"),"testttt");
+      Samochod sa=new Samochod("Toyota","Auris",2000,silnik,"Radio");
+//      Samochod sa2=new Samochod("Ford",new Silnik(3.2,215,"dise"),"testttt");
 
-        System.out.println(sa.getElementWyposazenia());
-        sa.add("klimatyzacja");
+        System.out.println(Samochod.getSamochody())        ;
+//        System.out.println(sa.getWiekSamochodu());
+//        System.out.println(sa.getElementWyposazenia());
+//        sa.add("klimatyzacja");
 //    sa.remove("skóra");
-        System.out.println(sa.getElementWyposazenia());
+//        System.out.println(sa.getElementWyposazenia());
 
-
-      sa.setOpis(null);
-        System.out.println(Samochod.getSamochod());
+//
+//      sa.setOpis(null);
+//        System.out.println(Samochod.getSamochod());
       //      sa.etOpis("");
 //System.out.println(sa.getOpis());
 
-        Samochod.pokazSamochody();
+//    /    Samochod.pokazSamochody();
 
 //    Samochod.show();
 //        System.out.println(sam.isofix());
