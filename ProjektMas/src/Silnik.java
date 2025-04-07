@@ -1,4 +1,6 @@
-public class Silnik {
+import java.io.Serializable;
+
+public class Silnik implements Serializable {
     private double pojemnosc;
     private int iloscKoniMechaniczynch;
     private String rodzajPaliwa;
