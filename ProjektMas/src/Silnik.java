@@ -1,12 +1,13 @@
 import java.io.Serializable;
 
-public class Silnik implements Serializable {
+public class Silnik extends ObjectPlus implements Serializable {
     private double pojemnosc;
     private int iloscKoniMechaniczynch;
     private String rodzajPaliwa;
     String arr[]={"benzyna","diesel","hybrydowy","elektryczny"};
 
     public Silnik(double pojemnosc, int iloscKoniMechaniczynch, String rodzajPaliwa) {
+       super();
         if(rodzajPaliwa.isBlank() || rodzajPaliwa==null){
             throw new IllegalArgumentException("Silnik musi cos spalac");
         }
@@ -23,8 +24,10 @@ public class Silnik implements Serializable {
         this.iloscKoniMechaniczynch=iloscKoniMechaniczynch;
         this.rodzajPaliwa=rodzajPaliwa;
 
+
+
+
     }
-    //dodaca punkt 2 serializacje
     public double getPojemnosc() {
         return pojemnosc;
     }

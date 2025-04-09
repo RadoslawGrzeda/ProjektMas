@@ -1,32 +1,54 @@
+import java.io.*;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-    Silnik silnik=new Silnik(1.6,132,"Beznyzna");
+        // Wczytanie ekstensji
+//        try {
+//            File file = new File("ekstensje.dat");
+//            if (file.exists()) {
+//                try (ObjectInputStream obI = new ObjectInputStream(new FileInputStream(file))) {
+//                    ObjectPlus.readExtents(obI);
+//                    System.out.println("Ekstensje wczytane.");
+//                }
+//            } else {
+//                System.out.println("Brak pliku.");
+//            }
+//        } catch (IOException | ClassNotFoundException e) {
+//            System.out.println("Błąd podczas wczytywania: " + e.getMessage());
+//        }
 
-//    Samochod sam=new Samochod(silnik,"Toyota","verso",1,"2022",5,192.31,100,600,2300,null);
-//    Samochod sam2=new Samochod(silnik,"Toyota","verso",1,"2022",5,192.31,100,600,2300,true);
+        //1
+//        Silnik silnik = new Silnik(1.6, 132, "Benzyna");
+//        Samochod sam = new Samochod("Toyota", "Auris", 2009, silnik, "nic ciekawego", "radio");
+//        System.out.println(Samochod.getEkstensjaSamochod());
 
-      Samochod sa=new Samochod("Toyota","Auris",2000,silnik,"Radio");
-//      Samochod sa2=new Samochod("Ford",new Silnik(3.2,215,"dise"),"testttt");
 
-        System.out.println(Samochod.getSamochody())        ;
-//        System.out.println(sa.getWiekSamochodu());
-//        System.out.println(sa.getElementWyposazenia());
-//        sa.add("klimatyzacja");
-//    sa.remove("skóra");
-//        System.out.println(sa.getElementWyposazenia());
+        //3
+//         Silnik silnik = new Silnik(1.6, 132, "Benzyna");
+//        System.out.println(sam.getSilnik().getIloscKoniMechaniczynch());
+//        Samochod sam = new Samochod("Toyota", "Auris", 2009, silnik, "nic ciekawego", "radio");
 
-//
-//      sa.setOpis(null);
-//        System.out.println(Samochod.getSamochod());
-      //      sa.etOpis("");
-//System.out.println(sa.getOpis());
+        //4
+//        Silnik silnik = new Silnik(1.6, 132, "Benzyna");
+//        Samochod sam = new Samochod("Toyota", "Auris", 2009, silnik,  "radio");
+//        String opis="Niezawodny samochod, swietnie sprawujacy sie w miescie";
+//        Samochod sam2 = new Samochod("Toyota", "Auris", 2009, silnik, opis, "radio");
+//        System.out.println(sam.getOpis());
+//        System.out.println(sam2.getOpis());
+//        sam.setOpis(opis);
+//        System.out.println(sam.getOpis());
 
-//    /    Samochod.pokazSamochody();
+        //5
 
-//    Samochod.show();
-//        System.out.println(sam.isofix());
-//        System.out.println(sam2.isofix());
-//        System.out.println(Samochod.getSamochod());
+
+
+//        try (ObjectOutputStream obp = new ObjectOutputStream(new FileOutputStream("ekstensje.dat"))) {
+//            ObjectPlus.writeExtents(obp);  // Zapis obiektów do pliku
+//            System.out.println("Elementy zapisane.");
+//        } catch (IOException e) {
+//            System.out.println("Błąd podczas zapisywania do ekstensji: " + e.getMessage());
+//        }
+
     }
 }

@@ -23,36 +23,52 @@ public class Samochod extends ObjectPlus{
     private int rokProdukcji;
     private String model;
 
+
+//    Silnik silnik = new Silnik(1.6, 132, "Benzyna");
+    Silnik silk= new Silnik(1.6, 132, "Benzyna");
     public Samochod(String marka,String model,int rokProdukcji,Silnik silnik,String elementWyposazenia) {
         super();
         if(marka.isBlank() || marka==null){
             throw new IllegalArgumentException("Marka nie moze byc pusta");
         }
+        if (silnik == null) {
+            throw new IllegalArgumentException("Silnik nie może być pusty");
+        }
+        this.silnik = silnik;
+
         this.rokProdukcji=rokProdukcji;
         this.model=model;
         dodajElementWyposazenia(elementWyposazenia);
         this.marka=marka;
-        this.silnik = silnik;
         this.opis = null;
         ekstensjaSamochod.add(this);
         }
 
-    public Samochod(String marka,String model,Silnik silnik,int rokProdukcji, String opis,String elementWyposazenia) {
+    public Samochod(String marka,String model,int rokProdukcji,Silnik silnik, String opis,String elementWyposazenia) {
         super();
         if(marka.isBlank() || marka==null){
             throw new IllegalArgumentException("Marka nie moze byc pusta");
         }
+        if (silnik == null) {
+            throw new IllegalArgumentException("Silnik nie może być pusty");
+        }
+        if (opis.isBlank() || opis.length()>100 || opis.length()< 20) {
+            throw new IllegalArgumentException("Niepoprawnie skonstruowany opis");
+        }
+
+
+        this.silnik = silnik;
         this.rokProdukcji=rokProdukcji;
         this.model=model;
         dodajElementWyposazenia(elementWyposazenia);
-        this.silnik = silnik;
         this.marka=marka;
         this.opis = opis;
         ekstensjaSamochod.add(this);
     }
 
-    //1 Ekstensja
-    public static List<Samochod> getEkstensjaSamochod() {
+    //1
+    public static List<Samochod> getEkstensjaSamochod()
+    {
         return Collections.unmodifiableList(ekstensjaSamochod);
     }
 
@@ -60,7 +76,7 @@ public class Samochod extends ObjectPlus{
     //2
 
 
-    //3 klasa Silnik
+    //3
 
     //4
     public void setOpis(String opis) {
@@ -79,6 +95,20 @@ public class Samochod extends ObjectPlus{
     }
 
     //5
+
+    public String getMarka() {
+        return marka;
+    }
+
+    public void setMarka(String marka) {
+        if(marka==null || marka.isBlank()){
+            throw new IllegalArgumentException("Marka nie moze byc pusta");
+        }
+        this.marka = marka;
+
+    }
+
+
     //6
     public  void dodajElementWyposazenia(String elementWyposazenia){
         if(elementWyposazenia.isBlank())
@@ -118,13 +148,6 @@ public class Samochod extends ObjectPlus{
     }
 
 
-    public void setMarka(String marka) {
-        if(marka==null || marka.isBlank()){
-            throw new IllegalArgumentException("Marka nie moze byc pusta");
-        }
-        this.marka = marka;
-
-    }
 
 
 
@@ -148,5 +171,10 @@ public String toString() {
             ", Wiek: " + getWiekSamochodu() + " lat" +
             (opis != null ? ", Opis: " + opis : "") +
             ", Wyposażenie: " + elementyWyposazenia;
-}}
+}
+public Silnik getSilnik(){
+        return silnik;
+}
+
+}
 
