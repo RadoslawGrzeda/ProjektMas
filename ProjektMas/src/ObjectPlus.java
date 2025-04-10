@@ -31,6 +31,14 @@ public abstract class ObjectPlus implements Serializable {
         allExtends = (HashMap<Class<? extends ObjectPlus>, List<ObjectPlus>>) stream.readObject();
     }
 
+    public static void usunObiekt(ObjectPlus obiekt) {
+        Class<?> clazz = obiekt.getClass();
+        List<ObjectPlus> extent = allExtends.get(clazz);
+        if (extent != null) {
+            extent.remove(obiekt);
+        }
+    }
+
     public static void showExtent(Class<?> theClass) throws Exception {
         List<ObjectPlus> extent = allExtends.get(theClass);
         if (extent == null) {

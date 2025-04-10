@@ -23,17 +23,23 @@ public class Samochod extends ObjectPlus{
     private int rokProdukcji;
     private String model;
 
+    int aktualnyRok=java.time.Year.now().getValue();
 
 //    Silnik silnik = new Silnik(1.6, 132, "Benzyna");
     Silnik silk= new Silnik(1.6, 132, "Benzyna");
     public Samochod(String marka,String model,int rokProdukcji,Silnik silnik,String elementWyposazenia) {
         super();
+        try {
         if(marka.isBlank() || marka==null){
             throw new IllegalArgumentException("Marka nie moze byc pusta");
         }
         if (silnik == null) {
             throw new IllegalArgumentException("Silnik nie może być pusty");
         }
+            if (rokProdukcji>aktualnyRok) {
+                throw new IllegalArgumentException("Podano nieprawidlowy rok produkcji");
+            }
+
         this.silnik = silnik;
 
         this.rokProdukcji=rokProdukcji;
@@ -42,29 +48,42 @@ public class Samochod extends ObjectPlus{
         this.marka=marka;
         this.opis = null;
         ekstensjaSamochod.add(this);
-        }
+        } catch (Exception e) {
+        ObjectPlus.usunObiekt(this);
+        throw e; //
+    }}
 
     public Samochod(String marka,String model,int rokProdukcji,Silnik silnik, String opis,String elementWyposazenia) {
         super();
-        if(marka.isBlank() || marka==null){
+
+     try{
+         if (marka.isBlank() || marka == null) {
             throw new IllegalArgumentException("Marka nie moze byc pusta");
         }
         if (silnik == null) {
             throw new IllegalArgumentException("Silnik nie może być pusty");
         }
-        if (opis.isBlank() || opis.length()>100 || opis.length()< 20) {
+        if (opis.isBlank() || opis.length() > 100 || opis.length() < 20) {
             throw new IllegalArgumentException("Niepoprawnie skonstruowany opis");
         }
+         if (rokProdukcji>aktualnyRok) {
+             throw new IllegalArgumentException("Podano nieprawidlowy rok produkcji");
+         }
 
 
-        this.silnik = silnik;
-        this.rokProdukcji=rokProdukcji;
-        this.model=model;
+
+         this.silnik = silnik;
+        this.rokProdukcji = rokProdukcji;
+        this.model = model;
         dodajElementWyposazenia(elementWyposazenia);
-        this.marka=marka;
+        this.marka = marka;
         this.opis = opis;
         ekstensjaSamochod.add(this);
-    }
+
+    }catch (Exception e) {
+        ObjectPlus.usunObiekt(this);
+    throw e;
+}}
 
     //1
     public static List<Samochod> getEkstensjaSamochod()
@@ -123,10 +142,14 @@ public class Samochod extends ObjectPlus{
         if (!this.elementyWyposazenia.contains(elementWyposazenia)) {
             throw new IllegalArgumentException("Samochod nie posiada takiego wyposażenia");
         }if(elementyWyposazenia.size()==1) {
-                throw new IllegalArgumentException("Nie mozna usunac osattniego elementu wyposazenia");
+                throw new IllegalArgumentException("Nie mozna usunac osatniego elementu wyposazenia");
             }
                 this.elementyWyposazenia.remove(elementWyposazenia);
             }
+
+    public List<String> getElementWyposazenia() {
+        return  Collections.unmodifiableList(elementyWyposazenia);
+    }
 
 
     //7
@@ -143,27 +166,18 @@ public class Samochod extends ObjectPlus{
 
     //8
     public int getWiekSamochodu(){
-        int aktualnyRok=java.time.Year.now().getValue();
+        int aktualnyRok = java.time.Year.now().getValue();
         return aktualnyRok-rokProdukcji;
     }
 
-
-
-
-
-    public static void show() {
-        for (Samochod samochod : ekstensjaSamochod) {
-            System.out.print(samochod);
-        }
-    }
-    public ArrayList<String> getElementWyposazenia() {return new ArrayList<>(elementyWyposazenia);}
-
+    //9
 
     public static void pokazSamochody(){
         for (Samochod samochod : ekstensjaSamochod) {
             System.out.println(samochod);
         }
     }
+
 
 @Override
 public String toString() {

@@ -40,7 +40,39 @@ public class Main {
 //        System.out.println(sam.getOpis());
 
         //5
+//        Silnik silnik = new Silnik(1.6, 132, "Benzyna");
+//        Samochod sam = new Samochod("Toyota", "Auris", 2009, silnik,  "radio");
+//        sam.setMarka("");
+//        sam.setMarka(null);
 
+
+        //6
+//        Silnik silnik = new Silnik(1.6, 132, "Benzyna");
+//        Samochod sam = new Samochod("Toyota", "Auris", 2009, silnik,  "radio");
+//        System.out.println(sam.getElementWyposazenia());
+//        sam.dodajElementWyposazenia(null);
+//        sam.dodajElementWyposazenia("");
+//        sam.dodajElementWyposazenia("klimatyzacja");
+//        System.out.println(sam.getElementWyposazenia());
+//        sam.usunElementWyposazenia("isofix");
+//        sam.usunElementWyposazenia("klimatyzacja");
+//        System.out.println(sam.getElementWyposazenia());
+//        sam.usunElementWyposazenia("radio");
+//
+
+        //7
+//        Silnik silnik = new Silnik(1.6, 132, "Benzyna");
+//        Samochod sam = new Samochod("Toyota", "Auris", 2009, silnik,  "radio");
+//        System.out.println(sam.getKaucja());
+//        sam.setKaucja(3212);
+//        System.out.println(sam.getKaucja());
+//        sam.setKaucja(1700);
+//        System.out.println(sam.getKaucja());
+
+        //8
+        Silnik silnik = new Silnik(1.6, 132, "Benzyna");
+        Samochod sam = new Samochod("Toyota", "Auris", 2009, silnik,  "radio");
+        System.out.println(sam.getWiekSamochodu());
 
 
 //        try (ObjectOutputStream obp = new ObjectOutputStream(new FileOutputStream("ekstensje.dat"))) {
