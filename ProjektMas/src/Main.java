@@ -4,25 +4,31 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         // Wczytanie ekstensji
-//        try {
-//            File file = new File("ekstensje.dat");
-//            if (file.exists()) {
-//                try (ObjectInputStream obI = new ObjectInputStream(new FileInputStream(file))) {
-//                    ObjectPlus.readExtents(obI);
-//                    System.out.println("Ekstensje wczytane.");
-//                }
-//            } else {
-//                System.out.println("Brak pliku.");
-//            }
-//        } catch (IOException | ClassNotFoundException e) {
-//            System.out.println("Błąd podczas wczytywania: " + e.getMessage());
-//        }
-
+        try {
+            File file = new File("ekstensje.dat");
+            if (file.exists()) {
+                try (ObjectInputStream obI = new ObjectInputStream(new FileInputStream(file))) {
+                    ObjectPlus.readExtents(obI);
+                    System.out.println("Ekstensje wczytane.");
+                }
+            } else {
+                System.out.println("Brak pliku.");
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Błąd podczas wczytywania: " + e.getMessage());
+        }
         //1
 //        Silnik silnik = new Silnik(1.6, 132, "Benzyna");
 //        Samochod sam = new Samochod("Toyota", "Auris", 2009, silnik, "nic ciekawego", "radio");
 //        System.out.println(Samochod.getEkstensjaSamochod());
 
+        //2
+//        Silnik silnik = new Silnik(1.6, 132, "Benzyna");
+//        Samochod sam = new Samochod("Toyota", "Auris", 2009, silnik,  "radio");
+//        System.out.println(sam.getWiekSamochodu());
+//        Samochod sam2 = new Samochod(null, "Auris", 2009, silnik,  "radio");
+
+//        ObjectPlus.showExtent(Samochod.class);
 
         //3
 //         Silnik silnik = new Silnik(1.6, 132, "Benzyna");
@@ -70,17 +76,13 @@ public class Main {
 //        System.out.println(sam.getKaucja());
 
         //8
-        Silnik silnik = new Silnik(1.6, 132, "Benzyna");
-        Samochod sam = new Samochod("Toyota", "Auris", 2009, silnik,  "radio");
-        System.out.println(sam.getWiekSamochodu());
-
-
-//        try (ObjectOutputStream obp = new ObjectOutputStream(new FileOutputStream("ekstensje.dat"))) {
-//            ObjectPlus.writeExtents(obp);  // Zapis obiektów do pliku
-//            System.out.println("Elementy zapisane.");
-//        } catch (IOException e) {
-//            System.out.println("Błąd podczas zapisywania do ekstensji: " + e.getMessage());
-//        }
+//
+        try (ObjectOutputStream obp = new ObjectOutputStream(new FileOutputStream("ekstensje.dat"))) {
+            ObjectPlus.writeExtents(obp);  // Zapis obiektów do pliku
+            System.out.println("Elementy zapisane.");
+        } catch (IOException e) {
+            System.out.println("Błąd podczas zapisywania do ekstensji: " + e.getMessage());
+        }
 
     }
 }

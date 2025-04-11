@@ -4,15 +4,6 @@ import java.util.List;
 
 
 public class Samochod extends ObjectPlus{
-//    private String model;
-//    private int idSamochodu;
-//    private String dataProdukcji;
-//    private int liczbaMiejsc;
-//    private double aktualnyPrzebieg;
-    //stan
-//    private double kwotaWypozyczeniaZaDzien;
-//    private double kwotaWypozyczeniaZaMiesiac;
-//    private double kwotaWypozyczeniaZatydzien;
 
     private static ArrayList<Samochod> ekstensjaSamochod = new ArrayList<>(); //ekstensja
     private Silnik silnik; //zlozony
@@ -25,8 +16,6 @@ public class Samochod extends ObjectPlus{
 
     int aktualnyRok=java.time.Year.now().getValue();
 
-//    Silnik silnik = new Silnik(1.6, 132, "Benzyna");
-    Silnik silk= new Silnik(1.6, 132, "Benzyna");
     public Samochod(String marka,String model,int rokProdukcji,Silnik silnik,String elementWyposazenia) {
         super();
         try {
@@ -189,6 +178,10 @@ public String toString() {
 public Silnik getSilnik(){
         return silnik;
 }
+public String getModel(){
+        return model;
+}
+
 
 }
 
